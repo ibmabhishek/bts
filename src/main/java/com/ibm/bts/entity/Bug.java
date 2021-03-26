@@ -1,4 +1,5 @@
 package com.ibm.bts.entity;
+import java.util.Date;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -14,12 +15,22 @@ public class Bug {
 	@NotNull
 	@NotBlank
 	private String status;
+	private Date createdDate;
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
 
 	public String getStatus() {
 		return status;
 	}
 
 	public void setStatus(String status) {
+		
 		this.status = status;
 	}
 
