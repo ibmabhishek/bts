@@ -3,6 +3,8 @@ package com.ibm.bts.service;
 import java.util.List;
 import java.util.Optional;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +29,11 @@ public class BugService {
 	public Optional<Bug> getOrder(String bugId) {
 		return bugRepository.findById(bugId);
 	}
+
+	public void updateBug(Bug bug) {
+		bugRepository.save(bug);
+	}
+	
+	
 
 }

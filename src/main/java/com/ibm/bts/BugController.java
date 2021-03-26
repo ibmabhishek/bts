@@ -14,6 +14,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -76,5 +77,12 @@ public class BugController {
 		return bugService.getOrder(bugId);
 
 	}
-
+	
+	@PutMapping("bug/{id}")
+	void updateBug(@RequestBody @Valid Bug bug, BindingResult bindingResult, @PathVariable("id") String bugId ) {
+		validateModel(bindingResult);
+		bug.setId(bugId);
+		bugService.updateBug(bug);
+		
+	}
 }
