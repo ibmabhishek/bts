@@ -33,6 +33,10 @@ public class BugService {
 	public void updateBug(Bug bug) {
 		bugRepository.save(bug);
 	}
+
+	public void deleteBug(String bugId) {
+		bugRepository.deleteById(bugId);
+	}
 	
 	
 
