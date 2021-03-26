@@ -49,7 +49,6 @@ public class BugController {
 	@ResponseStatus(code = HttpStatus.CREATED)
 	String createBug(@RequestBody @Valid Bug bug, BindingResult bindingResult) {
 		validateModel(bindingResult);
-		// System.out.println(bug); //TODO Replace sysout with Logger
 		logger.setLevel(Level.WARNING);
 		logger.log(Level.WARNING, bug.toString());
 		return bugService.createBug(bug);
@@ -79,12 +78,24 @@ public class BugController {
 
 	}
 	
+	/**
+	 * method to update a particular bug using bugId
+	 * @param bug
+	 * @param bindingResult
+	 * @param bugId
+	 */
+	
 	@PutMapping("bug/{id}")
 	void updateBug(@RequestBody @Valid Bug bug, BindingResult bindingResult, @PathVariable("id") String bugId ) {
 		validateModel(bindingResult);
 		bug.setId(bugId);
 		bugService.updateBug(bug);
 	}
+	
+	/**
+	 * method to delete a particular bug using bugId
+	 * @param bugId
+	 */
 	
 	@DeleteMapping("bug/{id}")
 	void deleteBug(@PathVariable("id") String bugId) {
