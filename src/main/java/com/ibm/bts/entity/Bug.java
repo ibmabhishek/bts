@@ -30,6 +30,17 @@ public class Bug {
 	}
 
 	public void setStatus(String status) {
+		String[] statusArray = {"NEW","URGENT","VERIFIED","NEED_MORE_INFO","CLOSED"};
+		int count = 0;
+		for (int i = 0; i < statusArray.length; i++) {
+			if(status.equals(statusArray[i])) {
+				count++;
+			}
+		}
+		
+		if(count == 0) {
+			throw new IllegalArgumentException("Invalid status");
+		}
 		
 		this.status = status;
 	}
